@@ -1,0 +1,31 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+// Remove margin top that all blocks getting assigned by default
+.is-layout-constrained .wp-block-valve-custom-universities-query {
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
+// Minimal block styling
+.wp-block-valve-custom-universities-query {
+	&__post {
+		display: grid;
+		grid-template-columns: 1fr 3fr;
+		gap: 2rem;
+		margin-block-start: 1.5rem;
+		margin-block-end: 1.5rem;
+	}
+
+	&__image img {
+		width: 160px;
+		height: auto;
+	}
+
+	&__title {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
