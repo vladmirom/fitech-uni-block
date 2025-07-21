@@ -14,7 +14,7 @@ export { __ } from '@wordpress/i18n'
 export { default as $ } from 'jquery'
 
 // Internal Components
-export { default as CustomStoriesControls } from './utils/BlockControls'
+export { default as CustomUniversityControls } from './utils/BlockControls'
 export { default as QueryControlsPanel } from './admin-controls/QueryControlsPanel'
 export { default as DisplaySettingsPanel } from './admin-controls/DisplaySettingsPanel'
 

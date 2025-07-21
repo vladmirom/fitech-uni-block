@@ -1,5 +1,5 @@
 /**
- * Display settings controls for Custom Stories Query block.
+ * Display settings controls for Custom Universities Query block.
  *
  * @file DisplaySettingsPanel.js
  */

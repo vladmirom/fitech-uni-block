@@ -40,7 +40,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         // Update the query with selected post IDs
         const updatedQuery = {
           ...currentQuery,
-          postType: 'university',
+          postType: 'fit-university',
           perPage: newSelectedPosts.length > 0 ? newSelectedPosts.length : postsPerPage,
         }
 
@@ -74,13 +74,13 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         // Get the university variation
         const { getBlockVariations } = select('core/blocks')
         const variations = getBlockVariations('core/query')
-        const variation = variations.find(v => v.name === 'university-variation')
+        const variation = variations.find(v => v.name === 'universities-variation')
 
         if (variation) {
           // Prepare query attributes
           const queryAttributes = {
             ...queryBlock.attributes.query,
-            postType: 'university',
+            postType: 'fit-university',
             perPage: selectedPosts.length > 0 ? selectedPosts.length : postsPerPage
           }
 
