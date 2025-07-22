@@ -2,7 +2,7 @@ import {
   useBlockProps,
   InnerBlocks,
   useEffect,
-  CustomStoriesControls,
+  CustomUniversityControls,
   ALLOWED_BLOCKS,
   TEMPLATE,
   applyJsClass,
@@ -18,9 +18,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
   const {
     innerBlocksType = 'core/query',
     selectedPosts = [],
-    postsPerPage = 6,
-    showExcerpt = true,
-    showFeaturedImage = true
+    postsPerPage = 6
   } = attributes
 
   // Function to update the inner query block
@@ -37,18 +35,22 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       if (queryBlock && queryBlock.name === 'core/query') {
         const currentQuery = queryBlock.attributes.query || {}
 
-        // Update the query with selected post IDs
         const updatedQuery = {
           ...currentQuery,
-          postType: 'fit-story',
+          postType: 'fit-university',
           perPage: newSelectedPosts.length > 0 ? newSelectedPosts.length : postsPerPage,
         }
 
-        // Add or remove include parameter based on selected posts
+        // Handle selected posts with proper REST API parameters
         if (newSelectedPosts && newSelectedPosts.length > 0) {
           updatedQuery.include = newSelectedPosts.map(id => parseInt(id, 10))
+          updatedQuery.orderby = 'include'
+          delete updatedQuery.order
         } else {
+          // Clean up when no posts selected
           delete updatedQuery.include
+          updatedQuery.orderby = 'date'
+          updatedQuery.order = 'desc'
         }
 
         // Update the query block attributes
@@ -59,8 +61,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
     }
   }
 
-  // Function to apply stories variation
-  const applyStoriesVariation = () => {
+  // Function to apply university variation
+  const applyUniversityVariation = () => {
     const { dispatch, select } = wp.data
     const { replaceBlock } = dispatch('core/block-editor')
     const { getBlock } = select('core/block-editor')
@@ -71,24 +73,28 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       const queryBlock = currentBlock.innerBlocks[0]
 
       if (queryBlock && queryBlock.name === 'core/query') {
-        // Get the stories variation
+        // Get the university variation
         const { getBlockVariations } = select('core/blocks')
         const variations = getBlockVariations('core/query')
-        const variation = variations.find(v => v.name === 'stories-variation')
+        const variation = variations.find(v => v.name === 'universities-variation')
 
         if (variation) {
-          // Prepare query attributes
+          // Prepare query attributes with proper REST API parameters
           const queryAttributes = {
             ...queryBlock.attributes.query,
-            postType: 'fit-story',
+            postType: 'fit-university',
             perPage: selectedPosts.length > 0 ? selectedPosts.length : postsPerPage
           }
 
-          // Add selected posts if any
+          // Handle selected posts with correct REST API parameters
           if (selectedPosts.length > 0) {
             queryAttributes.include = selectedPosts.map(id => parseInt(id, 10))
+            queryAttributes.orderby = 'include'
+            delete queryAttributes.order
           } else {
             delete queryAttributes.include
+            queryAttributes.orderby = 'date'
+            queryAttributes.order = 'desc'
           }
 
           // Create new block with variation attributes
@@ -112,9 +118,12 @@ export default function Edit({ attributes, setAttributes, clientId }) {
   // Effect to update query block when selectedPosts changes
   useEffect(() => {
     if (selectedPosts && selectedPosts.length >= 0) {
-      setTimeout(() => {
+      // Add a small delay to ensure the block is ready
+      const timeoutId = setTimeout(() => {
         updateQueryBlock(selectedPosts)
-      }, 100)
+      }, 150)
+
+      return () => clearTimeout(timeoutId)
     }
   }, [selectedPosts, clientId, postsPerPage])
 
@@ -124,9 +133,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
       setAttributes({ blockId: `${clientId}-${Date.now()}` })
     }
 
-    // Apply stories variation and js class on initial load
-    setTimeout(() => {
-      applyStoriesVariation()
+    // Apply university variation and js class on initial load
+    const timeoutId = setTimeout(() => {
+      applyUniversityVariation()
       applyJsClass(clientId, setAttributes)
     }, 500)
 
@@ -142,20 +151,21 @@ export default function Edit({ attributes, setAttributes, clientId }) {
     })
 
     return () => {
+      clearTimeout(timeoutId)
       unsubscribe()
     }
-  }, [clientId, setAttributes, attributes, selectedPosts, postsPerPage])
+  }, [clientId])
 
   return (
     <div {...blockProps}>
       {/* Sidebar Controls */}
-      <CustomStoriesControls
+      <CustomUniversityControls
         attributes={attributes}
         setAttributes={setAttributes}
       />
 
       {/* Posts Container */}
-      <div className="js-custom-stories-query">
+      <div className="js-custom-university-query">
         <InnerBlocks
           allowedBlocks={ALLOWED_BLOCKS}
           template={TEMPLATE}

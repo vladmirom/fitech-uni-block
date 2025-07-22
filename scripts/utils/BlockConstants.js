@@ -15,7 +15,7 @@ export const TEMPLATE = [
       perPage: 6,
       pages: 0,
       offset: 0,
-      postType: 'fit-story',
+      postType: 'fit-university',
       orderBy: 'date',
       order: 'desc',
     },

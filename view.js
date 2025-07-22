@@ -1,5 +1,5 @@
 /**
- * Frontend JavaScript for Custom Stories Query block
+ * Frontend JavaScript for Custom Universities Query block
  */
 
 document.addEventListener('DOMContentLoaded', () => {

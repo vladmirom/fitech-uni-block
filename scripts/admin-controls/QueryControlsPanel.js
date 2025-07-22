@@ -1,5 +1,5 @@
 /**
- * Query settings controls for Custom Stories Query block.
+ * Query settings controls for Custom Universities Query block.
  *
  * @file QueryControlsPanel.js
  */
@@ -43,15 +43,15 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
 
   // Update post IDs options when data is loaded
   useEffect(() => {
-    if (allPostTypesIds['fit-story']) {
-      const postIdsForType = allPostTypesIds['fit-story']
+    if (allPostTypesIds['fit-university']) {
+      const postIdsForType = allPostTypesIds['fit-university']
       const options = Object.entries(postIdsForType).map(([value, label]) => ({
         label: label,
         value: value
       }))
       setPostIdsOptions(options)
 
-      // Clear the postId if it's not valid for fit-story
+      // Clear the postId if it's not valid for fit-university
       if (postId && !postIdsForType[postId]) {
         setAttributes({ postId: '' })
       }
@@ -85,8 +85,8 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
   }
 
   const getPostTitle = (postId) => {
-    if (allPostTypesIds['fit-story'] && allPostTypesIds['fit-story'][postId]) {
-      return allPostTypesIds['fit-story'][postId]
+    if (allPostTypesIds['fit-university'] && allPostTypesIds['fit-university'][postId]) {
+      return allPostTypesIds['fit-university'][postId]
     }
     return `Post ID: ${postId}` // Fallback if title not found
   }
@@ -100,20 +100,20 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
           {isLoading ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Spinner />
-              <span>{__('Loading stories...', 'fitech-theme')}</span>
+              <span>{__('Loading universities...', 'fitech-theme')}</span>
             </div>
           ) : (
             <>
               <div style={{ marginBottom: '16px' }}>
                 <SelectControl
-                  label={__('Select your story', 'fitech-theme')}
+                  label={__('Select your university', 'fitech-theme')}
                   value={postId}
                   options={[
-                    { label: __('Select Story', 'fitech-theme'), value: '' },
+                    { label: __('Select University', 'fitech-theme'), value: '' },
                     ...postIdsOptions
                   ]}
                   onChange={handlePostIdChange}
-                  help={postIdsOptions.length === 0 ? __('No stories available', 'fitech-theme') : null}
+                  help={postIdsOptions.length === 0 ? __('No universities available', 'fitech-theme') : null}
                 />
 
                 <div style={{ marginTop: '8px' }}>
@@ -125,12 +125,12 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
                   >
                     {isPostAlreadySelected
                       ? __('Already Added', 'fitech-theme')
-                      : __('Add Story', 'fitech-theme')
+                      : __('Add University', 'fitech-theme')
                     }
                   </Button>
                   {isPostAlreadySelected && (
                     <span style={{ color: '#666', fontSize: '12px' }}>
-                      {__('This story is already in your selection', 'fitech-theme')}
+                      {__('This university is already in your selection', 'fitech-theme')}
                     </span>
                   )}
                 </div>
@@ -139,7 +139,7 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
               {selectedPosts.length > 0 && (
                 <div style={{ marginTop: '16px' }}>
                   <h4 style={{ margin: '0 0 12px 0', fontSize: '14px', fontWeight: '600' }}>
-                    {__('Selected Stories:', 'fitech-theme')}
+                    {__('Selected Universities:', 'fitech-theme')}
                   </h4>
                   <div style={{
                     border: '1px solid #ddd',
@@ -176,7 +176,7 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
                             fontSize: '12px',
                             lineHeight: '1'
                           }}
-                          aria-label={__('Remove story', 'fitech-theme')}
+                          aria-label={__('Remove university', 'fitech-theme')}
                         >
                           ×
                         </Button>
@@ -184,7 +184,7 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
                     ))}
                   </div>
                   <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>
-                    {__(`${selectedPosts.length} story(s) selected`, 'fitech-theme')}
+                    {__(`${selectedPosts.length} university(s) selected`, 'fitech-theme')}
                   </div>
                 </div>
               )}

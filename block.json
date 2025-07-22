@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "valve/custom-stories-query",
+	"name": "valve/custom-universities-query",
 	"version": "0.1.0",
-	"title": "Custom Stories Query",
+	"title": "Custom Universities Query",
 	"category": "valve-blocks",
 	"icon": "",
-	"description": "The block to display custom posts from fit-story post type.",
+	"description": "The block to display custom posts from fit-university post type.",
   "supports": {
     "align": ["wide", "full"],
     "html": false
@@ -33,14 +33,6 @@
     "postsPerPage": {
       "type": "number",
       "default": 6
-    },
-    "showExcerpt": {
-      "type": "boolean",
-      "default": true
-    },
-    "showFeaturedImage": {
-      "type": "boolean",
-      "default": true
     }
   },
 	"example": {},

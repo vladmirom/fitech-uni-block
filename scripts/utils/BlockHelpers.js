@@ -20,11 +20,11 @@ export const applyJsClass = (clientId, setAttributes) => {
         block => block.name === 'core/post-template'
       )
 
-      if (postTemplateBlock && !postTemplateBlock.attributes.className?.includes('js-custom-stories')) {
-        // Add js-custom-stories class to the post-template
+      if (postTemplateBlock && !postTemplateBlock.attributes.className?.includes('js-custom-universities')) {
+        // Add js-custom-universities class to the post-template
         const newClassName = postTemplateBlock.attributes.className
-          ? `${postTemplateBlock.attributes.className} js-custom-stories`
-          : 'js-custom-stories'
+          ? `${postTemplateBlock.attributes.className} js-custom-universities`
+          : 'js-custom-universities'
 
         wp.data.dispatch('core/block-editor').updateBlockAttributes(
           postTemplateBlock.clientId,

@@ -13,13 +13,13 @@ const { __ } = wp.i18n;
  *
  * This variation displays a layout with an image, title, and excerpt.
  *
- * @function registerStoriesLoopVariation
+ * @function registerUniversitiesLoopVariation
  * @returns {void}
  *
  */
-export const registerStoriesLoopVariation = () => {
+export const registerUniversitiesLoopVariation = () => {
   // Custom icon.
-  const StoriesVariationIcon = createElement(
+  const UniversitiesVariationIcon = createElement(
     'svg',
     {
       width: 48,
@@ -32,58 +32,50 @@ export const registerStoriesLoopVariation = () => {
       createElement('rect', {
         key: 'rect1',
         x: 20,
-        y: 18,
-        width: 17,
-        height: 1,
+        y: 20,
+        width: 8,
+        height: 2,
+        fill: 'black'
       }),
       createElement('rect', {
         key: 'rect2',
         x: 20,
-        y: 21,
-        width: 20,
-        height: 1,
+        y: 33,
+        width: 8,
+        height: 2,
+        fill: 'black'
       }),
       createElement('rect', {
         key: 'rect3',
         x: 20,
-        y: 31,
-        width: 17,
-        height: 1,
+        y: 13,
+        width: 20,
+        height: 3,
+        fill: 'black'
       }),
       createElement('rect', {
         key: 'rect4',
         x: 20,
-        y: 34,
+        y: 26,
         width: 20,
-        height: 1,
+        height: 3,
+        fill: 'black'
       }),
       createElement('rect', {
         key: 'rect5',
-        x: 20,
+        x: 7,
         y: 13,
-        width: 20,
-        height: 3,
+        width: 11,
+        height: 9,
+        fill: 'black'
       }),
       createElement('rect', {
         key: 'rect6',
-        x: 20,
-        y: 26,
-        width: 20,
-        height: 3,
-      }),
-      createElement('rect', {
-        key: 'rect7',
-        x: 7,
-        y: 13,
-        width: 11,
-        height: 9,
-      }),
-      createElement('rect', {
-        key: 'rect8',
         x: 7,
         y: 26,
         width: 11,
         height: 9,
+        fill: 'black'
       })
     ]
   );
@@ -91,10 +83,10 @@ export const registerStoriesLoopVariation = () => {
   registerBlockVariation(
     'core/query',
     {
-      name: 'stories-variation',
-      title: 'Stories',
-      description: 'Displays image, title, and excerpt for stories layout style',
-      icon: StoriesVariationIcon,
+      name: 'universities-variation',
+      title: 'Universities',
+      description: 'Displays image, title, and link for universities layout style',
+      icon: UniversitiesVariationIcon,
       innerBlocks: [
         ['core/post-template', {}, [
           ['core/columns', {}, [
@@ -108,10 +100,9 @@ export const registerStoriesLoopVariation = () => {
                 level: 4,
                 isLink: false
               }],
-              ['core/post-excerpt', {
-                showMoreOnNewLine: false,
-                moreText: '',
-                excerptLength: 20
+              ['core/read-more', {
+                content: 'Read More',
+                linkTarget: '_self'
               }]
             ]]
           ]]
@@ -123,4 +114,4 @@ export const registerStoriesLoopVariation = () => {
   );
 }
 
-export default registerStoriesLoopVariation
+export default registerUniversitiesLoopVariation
