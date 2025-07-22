@@ -20,12 +20,20 @@
 	}
 
 	&__image img {
-		width: 160px;
+		width: 150px;
 		height: auto;
 	}
 
 	&__title {
 		margin-top: 0;
 		margin-bottom: 0;
+		margin-block-end: 1rem;
+	}
+
+	&__link {
+		& a {
+			font-family: var(--wp--preset--font-family--heading);
+			font-size: var(--wp--preset--font-size--2-x-large);
+		}
 	}
 }

@@ -18,9 +18,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
   const {
     innerBlocksType = 'core/query',
     selectedPosts = [],
-    postsPerPage = 6,
-    showExcerpt = true,
-    showFeaturedImage = true
+    postsPerPage = 6
   } = attributes
 
   // Function to update the inner query block

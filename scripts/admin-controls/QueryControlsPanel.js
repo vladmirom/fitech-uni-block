@@ -1,5 +1,5 @@
 /**
- * Query settings controls for Custom Stories Query block.
+ * Query settings controls for Custom Universities Query block.
  *
  * @file QueryControlsPanel.js
  */
@@ -100,7 +100,7 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
           {isLoading ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Spinner />
-              <span>{__('Loading stories...', 'fitech-theme')}</span>
+              <span>{__('Loading universities...', 'fitech-theme')}</span>
             </div>
           ) : (
             <>
@@ -113,7 +113,7 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
                     ...postIdsOptions
                   ]}
                   onChange={handlePostIdChange}
-                  help={postIdsOptions.length === 0 ? __('No stories available', 'fitech-theme') : null}
+                  help={postIdsOptions.length === 0 ? __('No universities available', 'fitech-theme') : null}
                 />
 
                 <div style={{ marginTop: '8px' }}>
@@ -139,7 +139,7 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
               {selectedPosts.length > 0 && (
                 <div style={{ marginTop: '16px' }}>
                   <h4 style={{ margin: '0 0 12px 0', fontSize: '14px', fontWeight: '600' }}>
-                    {__('Selected Stories:', 'fitech-theme')}
+                    {__('Selected Universities:', 'fitech-theme')}
                   </h4>
                   <div style={{
                     border: '1px solid #ddd',

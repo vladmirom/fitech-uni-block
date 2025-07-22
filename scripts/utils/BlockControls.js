@@ -1,13 +1,13 @@
 /**
- * Main admin wrapper for Custom Stories Query block.
+ * Main admin wrapper for Custom Universities Query block.
  *
  * @file BlockControls.js
  */
 
 import { InspectorControls } from '../index'
-import { QueryControlsPanel, DisplaySettingsPanel } from '../index'
+import { QueryControlsPanel } from '../index'
 
-const CustomStoriesControls = ({
+const CustomUniversityControls = ({
   attributes,
   setAttributes
 }) => {
@@ -17,13 +17,8 @@ const CustomStoriesControls = ({
         attributes={attributes}
         setAttributes={setAttributes}
       />
-
-      <DisplaySettingsPanel
-        attributes={attributes}
-        setAttributes={setAttributes}
-      />
     </InspectorControls>
   )
 }
 
-export default CustomStoriesControls
+export default CustomUniversityControls
