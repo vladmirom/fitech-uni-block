@@ -1,23 +1,14 @@
 /**
- * Scripts export file for the custom-universities-query block
- *
+ * Scripts export file for the block
  * Export all components for easy imports in edit.js
  */
 
 // External Dependencies
-export { useBlockProps, InnerBlocks, InspectorControls } from '@wordpress/block-editor'
-export { PanelBody, PanelRow, Button, SelectControl, Spinner } from '@wordpress/components'
+export { useBlockProps, InspectorControls } from '@wordpress/block-editor'
+export { PanelBody, PanelRow, Button, TextControl, SelectControl, Spinner } from '@wordpress/components'
 export { useEffect, useState } from 'react'
 export { __ } from '@wordpress/i18n'
 
-// jQuery
-export { default as $ } from 'jquery'
-
 // Internal Components
-export { default as CustomUniversityControls } from './utils/BlockControls'
-export { default as QueryControlsPanel } from './admin-controls/QueryControlsPanel'
-
-// Utilities
-export { ALLOWED_BLOCKS, TEMPLATE } from './utils/BlockConstants'
-export { applyJsClass } from './utils/BlockHelpers'
-export { registerUniversitiesLoopVariation } from './utils/BlockVariations'
+export { default as CustomBlockControls } from './utils/BlockControls'
+export { default as ControlsPanel } from './admin-controls/ControlsPanel'

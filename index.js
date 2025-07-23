@@ -7,26 +7,19 @@ import './style.scss';
 import Edit from './edit';
 import metadata from './block.json';
 import { ReactComponent as BlockIconSvg } from './icons/block-icon.svg';
-import { registerUniversitiesLoopVariation } from './scripts';
 
-// Create a wrapper component that adds necessary attributes for the icon
 const blockIcon = () => (
-  <BlockIconSvg
-    width="24"
-    height="24"
-    viewBox="0 0 640 512"
-  />
+	<BlockIconSvg
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+	/>
 );
 
 /**
- * Register the block variation first
- */
-registerUniversitiesLoopVariation();
-
-/**
- * Every block starts by registering a new block type definition.
+ * Register the block type
  */
 registerBlockType( metadata.name, {
 	edit: Edit,
-  icon: blockIcon
+	icon: blockIcon
 } );

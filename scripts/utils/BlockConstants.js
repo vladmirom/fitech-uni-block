@@ -1,25 +1,18 @@
 /**
- * Constants and templates for the Custom Stories Query block.
+ * Constants for the block
  *
  * @file BlockConstants.js
  */
 
 import { __ } from '../index'
 
-export const ALLOWED_BLOCKS = ['core/query']
+// Example constants for your block
+export const BLOCK_DEFAULTS = {
+	content: __('Default content', 'your-textdomain')
+}
 
-export const TEMPLATE = [
-  ['core/query', {
-    queryId: Date.now(),
-    query: {
-      perPage: 6,
-      pages: 0,
-      offset: 0,
-      postType: 'fit-university',
-      orderBy: 'date',
-      order: 'desc',
-    },
-    className: 'js-query-container',
-    align: 'wide',
-  }]
+export const BLOCK_OPTIONS = [
+	{ label: __('Option 1', 'your-textdomain'), value: 'option1' },
+	{ label: __('Option 2', 'your-textdomain'), value: 'option2' },
+	{ label: __('Option 3', 'your-textdomain'), value: 'option3' }
 ]

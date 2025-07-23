@@ -1,42 +1,27 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "valve/custom-universities-query",
+	"name": "your-namespace/your-block-name",
 	"version": "0.1.0",
-	"title": "Custom Universities Query",
-	"category": "valve-blocks",
+	"title": "Your Block Title",
+	"category": "your-category",
 	"icon": "",
-	"description": "The block to display custom posts from fit-university post type.",
-  "supports": {
-    "align": ["wide", "full"],
-    "html": false
-  },
-  "attributes": {
-    "blockId": {
-      "type": "string"
-    },
-    "innerBlocksType": {
-      "type": "string",
-      "default": "core/query"
-    },
-    "postId": {
-      "type": "string",
-      "default": ""
-    },
-    "selectedPosts": {
-      "type": "array",
-      "default": [],
-      "items": {
-        "type": "string"
-      }
-    },
-    "postsPerPage": {
-      "type": "number",
-      "default": 6
-    }
-  },
+	"description": "Description of what your block does.",
+	"supports": {
+		"align": ["wide", "full"],
+		"html": false
+	},
+	"attributes": {
+		"blockId": {
+			"type": "string"
+		},
+		"content": {
+			"type": "string",
+			"default": ""
+		}
+	},
 	"example": {},
-	"textdomain": "fitech-theme",
+	"textdomain": "your-textdomain",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
