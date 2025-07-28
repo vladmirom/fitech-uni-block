@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "valve/slider-posts",
+	"name": "valve/posts-picker",
 	"version": "0.1.0",
-	"title": "Slider for Posts",
+	"title": "Posts Picker",
 	"category": "valve-blocks",
-	"icon": "slides",
-	"description": "The block to display slider with posts.",
+	"icon": "admin-post",
+	"description": "The block to display selected posts in a grid layout.",
   "supports": {
     "align": ["wide", "full"],
     "html": false
@@ -14,58 +14,6 @@
   "attributes": {
     "blockId": {
       "type": "string"
-    },
-    "arrows": {
-      "type": "boolean",
-      "default": false
-    },
-    "arrowsColor": {
-      "type": "string",
-      "default": "#000000"
-    },
-    "dots": {
-      "type": "boolean",
-      "default": false
-    },
-    "dotsMainColor": {
-      "type": "string",
-      "default": "#000000"
-    },
-    "dotsHoverColor": {
-      "type": "string",
-      "default": "#000000"
-    },
-    "dotsActiveColor": {
-      "type": "string",
-      "default": "#D3D3D3"
-    },
-    "infinite": {
-      "type": "boolean",
-      "default": false
-    },
-    "autoplay": {
-      "type": "boolean",
-      "default": false
-    },
-    "focusOnSelect": {
-      "type": "boolean",
-      "default": false
-    },
-    "slidesToShow": {
-      "type": "number",
-      "default": 3
-    },
-    "slidesToScroll": {
-      "type": "number",
-      "default": 1
-    },
-    "autoplaySpeed": {
-      "type": "number",
-      "default": 5000
-    },
-    "isSliderActive": {
-      "type": "boolean",
-      "default": false
     },
     "innerBlocksType": {
       "type": "string",
@@ -85,13 +33,28 @@
       "items": {
         "type": "string"
       }
+    },
+    "displayLayout": {
+      "type": "string",
+      "default": "grid"
+    },
+    "columnsDesktop": {
+      "type": "number",
+      "default": 3
+    },
+    "columnsTablet": {
+      "type": "number",
+      "default": 2
+    },
+    "columnsMobile": {
+      "type": "number",
+      "default": 1
     }
   },
 	"example": {},
-	"textdomain": "slider-posts",
+	"textdomain": "posts-picker",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
-	"render": "file:./render.php",
-	"viewScript": "file:./view.js"
+	"render": "file:./render.php"
 }

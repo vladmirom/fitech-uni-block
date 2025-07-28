@@ -5,7 +5,6 @@ import './style.scss';
  * Internal dependencies
  */
 import Edit from './edit';
-import Save from './save';
 import metadata from './block.json';
 import { ReactComponent as BlockIconSvg } from './icons/block-icon.svg';
 
@@ -14,7 +13,7 @@ const blockIcon = () => (
   <BlockIconSvg
     width="24"
     height="24"
-    viewBox="0 0 616 444"
+    viewBox="0 0 640 640"
   />
 );
 
@@ -28,6 +27,5 @@ registerBlockType( metadata.name, {
 	 * @see ./edit.js
 	 */
 	edit: Edit,
-  save: Save,
   icon: blockIcon
 } );

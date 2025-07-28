@@ -1,135 +1,142 @@
 /**
  * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
  */
 
-// Slick
-$slick-font-path: "./slick/fonts/";
-$slick-loader-path: "./slick/";
-
-@import "~slick-carousel/slick/slick";
-@import "~slick-carousel/slick/slick-theme";
-
-// Block styling.
-.wp-block-spinio-slider {
+// Block styling for editor
+.wp-block-valve-posts-picker {
   max-width: 100%;
   margin-left: 0;
   margin-right: 0;
 
-  // Cover itself. TODO: make it through controls.
-  & .wp-block-cover {
-    min-height: 800px;
-  }
-
-  // Inner content.
-  & .wp-block-cover__inner-container {
-    padding: var(--wp--preset--spacing--60);
-  }
-
-  // Showing 5% of next slide.
-  .slick-list {
-    padding:0 5% 0 0;
-  }
-
-  // Arrow styling
-  & .slick-arrows__wrap {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    z-index: 2;
-  }
-
-  & .slick-arrow {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--wp--preset--color--quaternary);
-    border: none;
-    padding: 2px;
-    cursor: pointer;
-
-    & svg {
-      width: 20px;
-      height: 20px;
-      transition: all 0.4s ease;
-    }
-
-    & + & {
-      margin-left: 20px;
-    }
-  }
-
-  & .prev-arrow {
-    &:hover,
-    &:active {
-      & svg {
-        transform: translate(5px);
-      }
-    }
-  }
-
-	& .next-arrow {
-		&:hover,
-    &:active {
-      & svg {
-        transform: translate(-5px);
-      }
-    }
-  }
-
-  // Navigation dots styling
-  & .slick-dots {
+  .posts-picker-container {
     position: relative;
-    bottom: 40px;
-    left: 40px;
-    text-align: left;
+  }
 
-    & li {
+  // Grid layout styles
+  .posts-picker-grid {
+    display: grid;
+    gap: 1.5rem;
+
+    // Mobile first - 1 column
+    grid-template-columns: 1fr;
+
+    // Tablet - 2 columns
+    @media (min-width: 768px) {
+      &.columns-tablet-1 { grid-template-columns: 1fr; }
+      &.columns-tablet-2 { grid-template-columns: repeat(2, 1fr); }
+      &.columns-tablet-3 { grid-template-columns: repeat(3, 1fr); }
+      &.columns-tablet-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    // Desktop - 3 columns default
+    @media (min-width: 1024px) {
+      &.columns-desktop-1 { grid-template-columns: 1fr; }
+      &.columns-desktop-2 { grid-template-columns: repeat(2, 1fr); }
+      &.columns-desktop-3 { grid-template-columns: repeat(3, 1fr); }
+      &.columns-desktop-4 { grid-template-columns: repeat(4, 1fr); }
+      &.columns-desktop-5 { grid-template-columns: repeat(5, 1fr); }
+      &.columns-desktop-6 { grid-template-columns: repeat(6, 1fr); }
+    }
+
+    // List layout override
+    &.layout-list {
+      grid-template-columns: 1fr !important;
+
+      .wp-block-post {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 1rem;
+        align-items: start;
+
+        @media (max-width: 767px) {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+  }
+
+  // Post item styling
+  .wp-block-post {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .wp-block-post-featured-image {
+    margin: 0;
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .layout-list & {
+      img {
+        height: 120px;
+      }
+    }
+  }
+
+  .wp-block-post-title {
+    margin: 0 0 0.5rem 0;
+    padding: 0 1rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--wp--preset--color--primary, #0073aa);
+      }
+    }
+  }
+
+  .wp-block-post-excerpt {
+    margin: 0 0 1rem 0;
+    padding: 0 1rem;
+    color: #666;
+
+    .wp-block-post-excerpt__text {
       margin: 0;
+    }
+  }
 
-      & button {
-        &::before {
-          font-size: 16px;
-          color: var(--wp--preset--color--white);
-          opacity: 1;
-          transition: all 0.4s ease;
-        }
+  .wp-block-post-date {
+    display: block;
+    margin: 0 0 1rem 0;
+    padding: 0 1rem;
+    font-size: 0.875rem;
+    color: #999;
+  }
 
-        &:hover {
-          &::before {
-            color: var(--wp--preset--color--light-blue);
-            opacity: 1;
-          }
-        }
-      }
+  .wp-block-button {
+    margin: 0 0 1rem 0;
+    padding: 0 1rem;
 
-      // Active element.
-      &.slick-active {
-        & button {
-          &::before {
-            color: var(--wp--preset--color--blue);
-            opacity: 1;
-          }
-        }
-      }
+    .wp-block-button__link {
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
     }
   }
 }
 
-// Panel controls.
-.panel-controll-color-settings {
-  width: 100%;
-
-  & .block-editor-panel-color-gradient-settings {
-    padding: 0;
-    border: none;
-
-    & .block-editor-tools-panel-color-gradient-settings__item {
-      margin-top: 0;
-      margin-bottom: 30px;
-    }
-  }
+// Selected posts indicator in editor
+.posts-picker-selected-indicator {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: var(--wp--preset--color--primary, #0073aa);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
 }

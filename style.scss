@@ -1,173 +1,162 @@
 /**
  * The following styles get applied both on the front of your site
  * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
  */
 
-
-// Slick
-$slick-font-path: "./slick/fonts/";
-$slick-loader-path: "./slick/";
-
-@import "~slick-carousel/slick/slick";
-@import "~slick-carousel/slick/slick-theme";
-
 // Remove margin top that all blocks getting assigned by default.
-.is-layout-constrained .wp-block-valve-slider {
+.is-layout-constrained .wp-block-valve-posts-picker {
 	margin-block-start: 0;
 	margin-block-end: 0;
 }
 
 // Block styling.
-.wp-block-valve-slider-posts {
+.wp-block-valve-posts-picker {
   position: relative;
 
-	.wp-block-valve-slider-posts {
-		&__image {
-			margin-bottom: 8px;
-		}
-
-		&__title {
-			color: var(--wp--preset--color--white);
-			margin-top: 0;
-			margin-bottom: 8px;
-			text-transform: uppercase;
-		}
-
-		&__excerpt {
-			color: var(--wp--preset--color--white);
-			margin-top: 0;
-			margin-bottom: 16px;
-
-			& .wp-block-post-excerpt__text {
-				color: var(--wp--preset--color--white);
-			}
-		}
-
-		&__button {
-			justify-content: center;
-		}
-	}
-
-	& .slick-slider .slick-track {
-		@media (min-width: 768px) {
-			display: flex;
-			gap: 30px;
-		}
-	}
-
-	// Slide height.
-	& .slick-slide {
-		height: auto;
-	}
-
-  // Inner content.
-  & .slide-content {
-    padding-right: 16px;
+  .posts-picker-container {
+    width: 100%;
   }
 
-  // Navigation dots styling.
-  & .slick-dots {
-		position: relative;
-		bottom: -10px;
-    display: flex;
-    justify-content: center;
-		align-items: center;
-		min-height: 28px;
+  // Grid layout
+  .posts-picker-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
 
-    @media screen and (min-width: 768px) {
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    // Dynamic columns based on data attributes
+    &[data-columns-mobile="1"] { grid-template-columns: 1fr; }
+    &[data-columns-mobile="2"] { grid-template-columns: repeat(2, 1fr); }
+
+    @media (min-width: 768px) {
+      &[data-columns-tablet="1"] { grid-template-columns: 1fr !important; }
+      &[data-columns-tablet="2"] { grid-template-columns: repeat(2, 1fr) !important; }
+      &[data-columns-tablet="3"] { grid-template-columns: repeat(3, 1fr) !important; }
+      &[data-columns-tablet="4"] { grid-template-columns: repeat(4, 1fr) !important; }
+    }
+
+    @media (min-width: 1024px) {
+      &[data-columns-desktop="1"] { grid-template-columns: 1fr !important; }
+      &[data-columns-desktop="2"] { grid-template-columns: repeat(2, 1fr) !important; }
+      &[data-columns-desktop="3"] { grid-template-columns: repeat(3, 1fr) !important; }
+      &[data-columns-desktop="4"] { grid-template-columns: repeat(4, 1fr) !important; }
+      &[data-columns-desktop="5"] { grid-template-columns: repeat(5, 1fr) !important; }
+      &[data-columns-desktop="6"] { grid-template-columns: repeat(6, 1fr) !important; }
+    }
+  }
+
+  // Post item styling
+  .wp-block-valve-posts-picker__post {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .wp-block-valve-posts-picker__image {
+    margin: 0;
+
+    img {
       width: 100%;
-      justify-content: center;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.2s ease;
     }
 
-    & li {
+    a:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  .wp-block-valve-posts-picker__content {
+    padding: 1.5rem;
+  }
+
+  .wp-block-valve-posts-picker__title {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    line-height: 1.4;
+    font-weight: 600;
+
+    a {
+      color: var(--wp--preset--color--foreground, #1a202c);
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--wp--preset--color--primary, #0073aa);
+      }
+    }
+  }
+
+  .wp-block-valve-posts-picker__excerpt {
+    margin: 0 0 1rem 0;
+
+    .wp-block-post-excerpt__text {
       margin: 0;
+      color: var(--wp--preset--color--foreground, #4a5568);
+      line-height: 1.6;
+    }
+  }
 
-      & button {
-        &::before {
-          font-size: 8px;
-          opacity: 1;
-          transition: var(--transition);
-        }
+  .wp-block-valve-posts-picker__meta {
+    margin: 0 0 1.5rem 0;
 
-        &:hover {
-          &::before {
-            opacity: 1;
-          }
-        }
-      }
+    .wp-block-post-date {
+      font-size: 0.875rem;
+      color: var(--wp--preset--color--foreground, #718096);
+    }
+  }
 
-      // Active element.
-      &.slick-active {
-        & button {
-          &::before {
-            opacity: 1;
-          }
-        }
-      }
+  .wp-block-valve-posts-picker__button {
+    display: inline-block;
+    background: var(--wp--preset--color--primary, #0073aa);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background: var(--wp--preset--color--primary-dark, #005a87);
+      color: white;
     }
   }
 }
 
- // Arrow styling
- .slick-arrows__wrap {
-  display: none;
-  justify-content: space-between;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  z-index: 2;
-
-  @media screen and (min-width: 768px) {
-    display: flex;
+// List layout styles
+.wp-block-valve-posts-picker[data-layout="list"] {
+  .posts-picker-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
   }
-}
 
-.slick-arrow {
-	width: 38px;
-	height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-	background-color: var(--wp--preset--color--quaternary);
-  border: none;
-  cursor: pointer;
+  .wp-block-valve-posts-picker__post {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 1.5rem;
+    align-items: start;
 
-  & svg {
-    transition: all 0.4s ease;
-  }
-}
-
-.prev-arrow {
-	margin-left: -38px;
-
-	&:hover,
-  &:focus {
-    outline: none;
-
-    & svg {
-      transform: translate(-5px);
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
     }
   }
-}
 
-.next-arrow {
-	margin-right: -38px;
-
-	&:hover,
-  &:focus {
-    outline: none;
-
-    & svg {
-      transform: translate(5px);
-    }
+  .wp-block-valve-posts-picker__image img {
+    height: 150px;
   }
-}
-
-// Hide first and last arrow on first and last slide.
-.slick-disabled {
-	opacity: 0;
-	pointer-events:none;
 }

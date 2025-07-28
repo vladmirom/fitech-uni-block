@@ -1,7 +1,7 @@
 /**
- * Constants and templates for the Slider Posts block.
+ * Constants and templates for the Posts Picker block.
  *
- * @file SliderConstants.js
+ * @file PickerConstants.js
  */
 
 import { __ } from '../index'
@@ -12,19 +12,18 @@ export const TEMPLATE = [
   ['core/query', {
     queryId: Date.now(),
     query: {
-      perPage: 3,
+      perPage: 6,
       pages: 0,
       offset: 0,
       postType: 'post',
       orderBy: 'date',
       order: 'desc',
-      // This will be updated dynamically when posts are selected
     },
     displayLayout: {
       type: 'flex',
-      columns: 1,
+      columns: 3,
     },
-    className: 'js-slide-container',
+    className: 'posts-picker-query',
     align: '',
   }]
 ]
@@ -34,7 +33,7 @@ export const createTemplateWithPosts = (selectedPosts = [], postType = 'post') =
   const queryAttributes = {
     queryId: Date.now(),
     query: {
-      perPage: selectedPosts.length > 0 ? selectedPosts.length : 3,
+      perPage: selectedPosts.length > 0 ? selectedPosts.length : 6,
       pages: 0,
       offset: 0,
       postType: postType,
@@ -43,9 +42,9 @@ export const createTemplateWithPosts = (selectedPosts = [], postType = 'post') =
     },
     displayLayout: {
       type: 'flex',
-      columns: 1,
+      columns: 3,
     },
-    className: 'js-slide-container',
+    className: 'posts-picker-query',
     align: '',
   }
 
@@ -59,9 +58,9 @@ export const createTemplateWithPosts = (selectedPosts = [], postType = 'post') =
 
 // Fallback options - these will be used if the API call fails
 export const FALLBACK_POST_TYPE_OPTIONS = [
-  { label: __('Post', 'slider-posts'), value: 'post' },
-  { label: __('Page', 'slider-posts'), value: 'page' },
-  { label: __('Villas', 'slider-posts'), value: 'villa' },
-  { label: __('Apartment', 'slider-posts'), value: 'apartment' },
-  { label: __('Experiences', 'slider-posts'), value: 'experience' },
+  { label: __('Post', 'posts-picker'), value: 'post' },
+  { label: __('Page', 'posts-picker'), value: 'page' },
+  { label: __('Villas', 'posts-picker'), value: 'villa' },
+  { label: __('Apartment', 'posts-picker'), value: 'apartment' },
+  { label: __('Experiences', 'posts-picker'), value: 'experience' },
 ]

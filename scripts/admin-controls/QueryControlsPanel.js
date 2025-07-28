@@ -6,7 +6,7 @@
 
 import { PanelBody, PanelRow, SelectControl, Button, Spinner, __ } from '../index'
 import { useState, useEffect } from 'react'
-import { FALLBACK_POST_TYPE_OPTIONS } from '../utils/SliderConstants'
+import { FALLBACK_POST_TYPE_OPTIONS } from '../utils/PickerConstants'
 
 const QueryControlsPanel = ({ attributes, setAttributes }) => {
   const { postType, postId, selectedPosts = [] } = attributes
@@ -15,10 +15,6 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
   const [allPostTypesIds, setAllPostTypesIds] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
-
-  // Debug logging
-  console.log('Current attributes:', attributes)
-  console.log('Selected posts:', selectedPosts)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -100,11 +96,6 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
     }
 
     const updatedSelectedPosts = [...selectedPosts, postId]
-
-    // Debug logging
-    console.log('Adding post ID:', postId)
-    console.log('Updated selectedPosts:', updatedSelectedPosts)
-
     setAttributes({
       selectedPosts: updatedSelectedPosts,
       postId: '' // Clear selection after adding
@@ -126,37 +117,37 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
   const isPostAlreadySelected = postId && selectedPosts.includes(postId)
 
   return (
-    <PanelBody title={__('Query Controls', 'slider-posts')}>
+    <PanelBody title={__('Query Controls', 'posts-picker')}>
       <PanelRow>
         <div style={{ width: '100%' }}>
           {isLoading ? (
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Spinner />
-              <span>{__('Loading post types...', 'slider-posts')}</span>
+              <span>{__('Loading post types...', 'posts-picker')}</span>
             </div>
           ) : (
             <>
               <SelectControl
-                label={__('Post type', 'slider-posts')}
+                label={__('Post type', 'posts-picker')}
                 value={postType}
                 options={[
-                  { label: __('Select post type', 'slider-posts'), value: '' },
+                  { label: __('Select post type', 'posts-picker'), value: '' },
                   ...postTypeOptions
                 ]}
                 onChange={handlePostTypeChange}
-                help={error ? __('Using fallback options due to API error', 'slider-posts') : null}
+                help={error ? __('Using fallback options due to API error', 'posts-picker') : null}
               />
 
               <div style={{ marginBottom: '16px' }}>
                 <SelectControl
-                  label={__(`Select your ${postType || 'post'}`, 'slider-posts')}
+                  label={__(`Select your ${postType || 'post'}`, 'posts-picker')}
                   value={postId}
                   options={[
-                    { label: __('Select Post', 'slider-posts'), value: '' },
+                    { label: __('Select Post', 'posts-picker'), value: '' },
                     ...postIdsOptions
                   ]}
                   onChange={handlePostIdChange}
-                  help={postIdsOptions.length === 0 && postType ? __('No items available for this post type', 'slider-posts') : null}
+                  help={postIdsOptions.length === 0 && postType ? __('No items available for this post type', 'posts-picker') : null}
                 />
 
                 <div style={{ marginTop: '8px' }}>
@@ -167,13 +158,13 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
                     style={{ marginRight: '8px' }}
                   >
                     {isPostAlreadySelected
-                      ? __('Already Added', 'slider-posts')
-                      : __('Add Post', 'slider-posts')
+                      ? __('Already Added', 'posts-picker')
+                      : __('Add Post', 'posts-picker')
                     }
                   </Button>
                   {isPostAlreadySelected && (
                     <span style={{ color: '#666', fontSize: '12px' }}>
-                      {__('This post is already in your selection', 'slider-posts')}
+                      {__('This post is already in your selection', 'posts-picker')}
                     </span>
                   )}
                 </div>
@@ -182,7 +173,7 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
               {selectedPosts.length > 0 && (
                 <div style={{ marginTop: '16px' }}>
                   <h4 style={{ margin: '0 0 12px 0', fontSize: '14px', fontWeight: '600' }}>
-                    {__('Selected Posts:', 'slider-posts')}
+                    {__('Selected Posts:', 'posts-picker')}
                   </h4>
                   <div style={{
                     border: '1px solid #ddd',
@@ -219,7 +210,7 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
                             fontSize: '12px',
                             lineHeight: '1'
                           }}
-                          aria-label={__('Remove post', 'slider-posts')}
+                          aria-label={__('Remove post', 'posts-picker')}
                         >
                           ×
                         </Button>
@@ -227,7 +218,7 @@ const QueryControlsPanel = ({ attributes, setAttributes }) => {
                     ))}
                   </div>
                   <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>
-                    {__(`${selectedPosts.length} post(s) selected`, 'slider-posts')}
+                    {__(`${selectedPosts.length} post(s) selected`, 'posts-picker')}
                   </div>
                 </div>
               )}
