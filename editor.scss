@@ -1,3 +1,135 @@
 /**
- * The following styles get applied in the editor only.
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
  */
+
+// Slick
+$slick-font-path: "./slick/fonts/";
+$slick-loader-path: "./slick/";
+
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
+
+// Block styling.
+.wp-block-spinio-slider {
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+
+  // Cover itself. TODO: make it through controls.
+  & .wp-block-cover {
+    min-height: 800px;
+  }
+
+  // Inner content.
+  & .wp-block-cover__inner-container {
+    padding: var(--wp--preset--spacing--60);
+  }
+
+  // Showing 5% of next slide.
+  .slick-list {
+    padding:0 5% 0 0;
+  }
+
+  // Arrow styling
+  & .slick-arrows__wrap {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    z-index: 2;
+  }
+
+  & .slick-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--wp--preset--color--quaternary);
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+
+    & svg {
+      width: 20px;
+      height: 20px;
+      transition: all 0.4s ease;
+    }
+
+    & + & {
+      margin-left: 20px;
+    }
+  }
+
+  & .prev-arrow {
+    &:hover,
+    &:active {
+      & svg {
+        transform: translate(5px);
+      }
+    }
+  }
+
+	& .next-arrow {
+		&:hover,
+    &:active {
+      & svg {
+        transform: translate(-5px);
+      }
+    }
+  }
+
+  // Navigation dots styling
+  & .slick-dots {
+    position: relative;
+    bottom: 40px;
+    left: 40px;
+    text-align: left;
+
+    & li {
+      margin: 0;
+
+      & button {
+        &::before {
+          font-size: 16px;
+          color: var(--wp--preset--color--white);
+          opacity: 1;
+          transition: all 0.4s ease;
+        }
+
+        &:hover {
+          &::before {
+            color: var(--wp--preset--color--light-blue);
+            opacity: 1;
+          }
+        }
+      }
+
+      // Active element.
+      &.slick-active {
+        & button {
+          &::before {
+            color: var(--wp--preset--color--blue);
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Panel controls.
+.panel-controll-color-settings {
+  width: 100%;
+
+  & .block-editor-panel-color-gradient-settings {
+    padding: 0;
+    border: none;
+
+    & .block-editor-tools-panel-color-gradient-settings__item {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+  }
+}

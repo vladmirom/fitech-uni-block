@@ -1,16 +1,173 @@
 /**
- * The following styles get applied both on the frontend
+ * The following styles get applied both on the front of your site
  * and in the editor.
  *
- * The wrapper ccs class that is generated is following this structure: wp-block-{namespace}-{block-name}
+ * Replace them with your own styles or remove the file completely.
  */
 
-// Remove margin top that all blocks getting assigned by default
-.is-layout-constrained .wp-block-your-namespace-block {
+
+// Slick
+$slick-font-path: "./slick/fonts/";
+$slick-loader-path: "./slick/";
+
+@import "~slick-carousel/slick/slick";
+@import "~slick-carousel/slick/slick-theme";
+
+// Remove margin top that all blocks getting assigned by default.
+.is-layout-constrained .wp-block-valve-slider {
 	margin-block-start: 0;
 	margin-block-end: 0;
 }
 
-.wp-block-your-namespace-block {
-    display: block;
+// Block styling.
+.wp-block-valve-slider-posts {
+  position: relative;
+
+	.wp-block-valve-slider-posts {
+		&__image {
+			margin-bottom: 8px;
+		}
+
+		&__title {
+			color: var(--wp--preset--color--white);
+			margin-top: 0;
+			margin-bottom: 8px;
+			text-transform: uppercase;
+		}
+
+		&__excerpt {
+			color: var(--wp--preset--color--white);
+			margin-top: 0;
+			margin-bottom: 16px;
+
+			& .wp-block-post-excerpt__text {
+				color: var(--wp--preset--color--white);
+			}
+		}
+
+		&__button {
+			justify-content: center;
+		}
+	}
+
+	& .slick-slider .slick-track {
+		@media (min-width: 768px) {
+			display: flex;
+			gap: 30px;
+		}
+	}
+
+	// Slide height.
+	& .slick-slide {
+		height: auto;
+	}
+
+  // Inner content.
+  & .slide-content {
+    padding-right: 16px;
+  }
+
+  // Navigation dots styling.
+  & .slick-dots {
+		position: relative;
+		bottom: -10px;
+    display: flex;
+    justify-content: center;
+		align-items: center;
+		min-height: 28px;
+
+    @media screen and (min-width: 768px) {
+      width: 100%;
+      justify-content: center;
+    }
+
+    & li {
+      margin: 0;
+
+      & button {
+        &::before {
+          font-size: 8px;
+          opacity: 1;
+          transition: var(--transition);
+        }
+
+        &:hover {
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
+
+      // Active element.
+      &.slick-active {
+        & button {
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+ // Arrow styling
+ .slick-arrows__wrap {
+  display: none;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 2;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
+}
+
+.slick-arrow {
+	width: 38px;
+	height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	background-color: var(--wp--preset--color--quaternary);
+  border: none;
+  cursor: pointer;
+
+  & svg {
+    transition: all 0.4s ease;
+  }
+}
+
+.prev-arrow {
+	margin-left: -38px;
+
+	&:hover,
+  &:focus {
+    outline: none;
+
+    & svg {
+      transform: translate(-5px);
+    }
+  }
+}
+
+.next-arrow {
+	margin-right: -38px;
+
+	&:hover,
+  &:focus {
+    outline: none;
+
+    & svg {
+      transform: translate(5px);
+    }
+  }
+}
+
+// Hide first and last arrow on first and last slide.
+.slick-disabled {
+	opacity: 0;
+	pointer-events:none;
 }

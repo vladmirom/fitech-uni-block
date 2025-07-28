@@ -1,27 +1,94 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "your-namespace/your-block-name",
+	"name": "valve/slider-posts",
 	"version": "0.1.0",
-	"title": "Your Block Title",
-	"category": "your-category",
-	"icon": "",
-	"description": "Description of what your block does.",
-	"supports": {
-		"align": ["wide", "full"],
-		"html": false
-	},
-	"attributes": {
-		"blockId": {
-			"type": "string"
-		},
-		"content": {
-			"type": "string",
-			"default": ""
-		}
-	},
+	"title": "Slider for Posts",
+	"category": "valve-blocks",
+	"icon": "slides",
+	"description": "The block to display slider with posts.",
+  "supports": {
+    "align": ["wide", "full"],
+    "html": false
+  },
+  "attributes": {
+    "blockId": {
+      "type": "string"
+    },
+    "arrows": {
+      "type": "boolean",
+      "default": false
+    },
+    "arrowsColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "dots": {
+      "type": "boolean",
+      "default": false
+    },
+    "dotsMainColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "dotsHoverColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "dotsActiveColor": {
+      "type": "string",
+      "default": "#D3D3D3"
+    },
+    "infinite": {
+      "type": "boolean",
+      "default": false
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": false
+    },
+    "focusOnSelect": {
+      "type": "boolean",
+      "default": false
+    },
+    "slidesToShow": {
+      "type": "number",
+      "default": 3
+    },
+    "slidesToScroll": {
+      "type": "number",
+      "default": 1
+    },
+    "autoplaySpeed": {
+      "type": "number",
+      "default": 5000
+    },
+    "isSliderActive": {
+      "type": "boolean",
+      "default": false
+    },
+    "innerBlocksType": {
+      "type": "string",
+      "default": "core/query"
+    },
+    "postType": {
+      "type": "string",
+      "default": ""
+    },
+    "postId": {
+      "type": "string",
+      "default": ""
+    },
+    "selectedPosts": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    }
+  },
 	"example": {},
-	"textdomain": "your-textdomain",
+	"textdomain": "slider-posts",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
