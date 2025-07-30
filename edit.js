@@ -1,13 +1,13 @@
 import {
   useBlockProps,
   InnerBlocks,
-  useEffect,
   PickerControls,
   ALLOWED_BLOCKS,
   TEMPLATE,
   updateQueryBlock,
   applyPickerClass
 } from './scripts'
+import { useEffect } from 'react'
 import './editor.scss'
 
 export default function Edit({ attributes, setAttributes, clientId }) {

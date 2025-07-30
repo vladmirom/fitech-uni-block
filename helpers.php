@@ -1,5 +1,13 @@
 <?php
 /**
+ * Helper functions for WordPress blocks.
+ *
+ * NOTE: These functions appear to be from a different block (possibly a slider/carousel block)
+ * and are not currently used by the posts-picker block. They are kept here for potential
+ * future use or should be moved to the appropriate block if needed.
+ */
+
+/**
  * Formats the slide content into an HTML heading tag based on the specified level.
  *
  * @param array $slide_content The content of the slide, including attributes such as 'level' and 'content'.

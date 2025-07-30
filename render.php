@@ -29,20 +29,20 @@ $use_custom_query = !empty($selectedPosts);
 ?>
 
 <style>
-    #<?php echo $block_id; ?> .posts-picker-grid {
+    #<?php echo $block_id; ?> .wp-block-valve-posts-picker__picker {
         display: grid;
         gap: 2rem;
         grid-template-columns: repeat(<?php echo $columnsMobile; ?>, 1fr);
     }
 
     @media (min-width: 768px) {
-        #<?php echo $block_id; ?> .posts-picker-grid {
+        #<?php echo $block_id; ?> .wp-block-valve-posts-picker__picker {
             grid-template-columns: repeat(<?php echo $columnsTablet; ?>, 1fr);
         }
     }
 
     @media (min-width: 1024px) {
-        #<?php echo $block_id; ?> .posts-picker-grid {
+        #<?php echo $block_id; ?> .wp-block-valve-posts-picker__picker {
             grid-template-columns: repeat(<?php echo $columnsDesktop; ?>, 1fr);
         }
     }
